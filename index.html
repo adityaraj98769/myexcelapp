@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Purpose Sheet Manager</title>
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <div class="home-container">
+            <div class="header-section">
+                <h1>📊 Multi-Purpose Sheet Manager</h1>
+                <p>Choose the type of sheet you want to create</p>
+            </div>
+
+            <div class="cards-container">
+                <div class="option-card" onclick="showPage('marksheetPage')">
+                    <div class="card-icon">🎓</div>
+                    <h2>Student Marksheet</h2>
+                    <p>Create and manage student grades</p>
+                    <button class="card-btn">Create Marksheet</button>
+                </div>
+                
+                <div class="option-card" onclick="showPage('employeePage')">
+                    <div class="card-icon">💼</div>
+                    <h2>Employee Salary Sheet</h2>
+                    <p>Manage salary, HRA, TA, DA</p>
+                    <button class="card-btn">Create Salary Sheet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marksheet Page -->
+    <div id="marksheetPage" class="page">
+        <div class="container">
+            <div class="card">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('homePage')">← Back</button>
+                    <h1>🎓 Student Marksheet Manager</h1>
+                </div>
+
+                <div class="info-section">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Student Name</label>
+                            <input type="text" id="studentName">
+                        </div>
+                        <div class="form-group">
+                            <label>Roll Number</label>
+                            <input type="text" id="rollNumber">
+                        </div>
+                        <div class="form-group">
+                            <label>Class</label>
+                            <input type="text" id="studentClass">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="add-section">
+                    <h2>Add Subject</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Subject Name</label>
+                            <input type="text" id="subjectName">
+                        </div>
+                        <div class="form-group">
+                            <label>Marks Obtained</label>
+                            <input type="number" id="marksObtained">
+                        </div>
+                        <div class="form-group">
+                            <label>Maximum Marks</label>
+                            <input type="number" id="maxMarks" value="100">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" onclick="addSubject()">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="marksheetTable" style="display:none;">
+                    <div class="table-header">
+                        <h2>Marksheet</h2>
+                        <button class="btn btn-danger" onclick="clearMarksheet()">Clear All</button>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Marks</th>
+                                    <th>Max</th>
+                                    <th>%</th>
+                                    <th class="no-print">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subjectsTableBody"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="result-section">
+                        <div class="result-card">
+                            <p>Total Marks</p>
+                            <h3 id="totalMarks">0 / 0</h3>
+                        </div>
+                        <div class="result-card">
+                            <p>Percentage</p>
+                            <h3 id="percentage">0%</h3>
+                        </div>
+                        <div class="result-card highlight">
+                            <p>Grade</p>
+                            <h3 id="grade">-</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="marksheetEmpty" class="empty-state">
+                    No subjects added yet.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employee Page -->
+    <div id="employeePage" class="page">
+        <div class="container">
+            <div class="card">
+                <div class="page-header">
+                    <button class="back-btn" onclick="showPage('homePage')">← Back</button>
+                    <h1>💼 Employee Salary Manager</h1>
+                </div>
+
+                <div class="add-section">
+                    <h2>Add Employee</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" id="empName">
+                        </div>
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" id="empId">
+                        </div>
+                        <div class="form-group">
+                            <label>Basic Salary</label>
+                            <input type="number" id="basicSalary">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" onclick="addEmployee()">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="employeeTable" style="display:none;">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th>Basic</th>
+                                    <th>HRA</th>
+                                    <th>DA</th>
+                                    <th>TA</th>
+                                    <th>Total</th>
+                                    <th class="no-print">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeeTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="employeeEmpty" class="empty-state">
+                    No employees added yet.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS File -->
+    <script src="script.js"></script>
+</body>
+</html>
