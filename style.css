@@ -31,6 +31,7 @@
 }
 
 .header-section h1 {
+    color: #fc8181;
     font-size: 3rem;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
